@@ -15,6 +15,14 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('HOME PAGE') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('apartments')" :active="request()->routeIs('apartments')">
+                        {{ __('APARTMENTS') }}
+                    </x-nav-link>
+                    @if(Auth::check() && Auth::user()->isAdmin())
+                    <x-nav-link :href="route('apartments-create')" :active="request()->routeIs('apartments-create')">
+                        {{ __('ADD AN APARTMENT') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 

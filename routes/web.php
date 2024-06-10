@@ -7,6 +7,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/apartments', function () {
+    return view('apartments/index');
+})->middleware(['auth', 'verified'])->name('apartments');;
+
+Route::get('/apartments/{id}', [ApartmentController::class, 'show'])->name('apartments.show');
+
+Route::get('/apartments-create', function () {
+    return view('apartments/create');
+})->middleware(['admin', 'verified'])->name('apartments-create');;
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
